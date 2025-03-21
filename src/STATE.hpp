@@ -16,9 +16,8 @@
     at_state = newState;                                                                  \
     atStateTimer = millis();
 
-#define SET_TCPSTATE(newState)                                                              \
-    Serial.printf("Set TCP state to %s after %dms\n", #newState, millis() - tcpStateTimer); \
-    tcp_state = newState;                                                                   \
+#define SET_TCPSTATE(newState) \
+    tcp_state = newState;      \
     tcpStateTimer = millis();
 
 enum STATE_MACHINE

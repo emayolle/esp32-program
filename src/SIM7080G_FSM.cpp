@@ -49,7 +49,7 @@ void SIM7080G::FSM()
 
     case TCP_INIT:
     {
-        socketClient = new SocketClient("2.tcp.eu.ngrok.io", 11562, "TCP");
+        socketClient = new SocketClient("7.tcp.eu.ngrok.io", 10571, "TCP");
         SET_STATE(TCP_CONNECT);
         break;
     }

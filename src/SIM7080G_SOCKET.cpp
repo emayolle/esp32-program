@@ -48,7 +48,6 @@ bool SocketClient::send(String message)
         AT_RESPONSE response = SIM7080G::SERIAL::send_AT("AT+CASEND=0," + String(message.length()));
         if (response.isFinished && !response.message.isEmpty())
         {
-            Serial.println(response.message);
             SET_TCPSTATE(TCP_SEND_DATA);
         }
     }
@@ -58,7 +57,6 @@ bool SocketClient::send(String message)
         AT_RESPONSE response = SIM7080G::SERIAL::send_AT(message);
         if (response.isFinished && !response.message.isEmpty())
         {
-            Serial.println(response.message);
             SET_TCPSTATE(TCP_EMPTY);
             return true;
         }
