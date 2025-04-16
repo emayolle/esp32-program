@@ -22,10 +22,16 @@ bool SocketClient::connect()
 {
     AT_RESPONSE connectResponse = SIM7080G::SERIAL::send_AT("AT+CAOPEN=0,0,\"" + String(protocol) + "\",\"" + String(ip) + "\"," + String(port), 1000);
 
-    if (connectResponse.isFinished && connectResponse.message.indexOf("+CAOPEN: 0,0") != -1)
+
+    if (connectResponse.isFinished)
     {
-        return true;
-    }
+        if (connectResponse.message.indexOf("+CAOPEN: 0,0") != -1)
+        {
+            return true;
+        }
+
+        Serial.printf(connectResponse.message.c_str());
+    } 
 
     return false;
 }
